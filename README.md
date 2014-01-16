@@ -10,4 +10,4 @@
 
 # Author
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Jeremy Ward (<jeremy.ward@digital-ocd.com>)

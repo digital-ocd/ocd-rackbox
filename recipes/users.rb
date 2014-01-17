@@ -7,26 +7,30 @@ user node['rackbox']['user'] do
   group node['rackbox']['group']
   password node['rackbox']['password']
   system true
-  home "/home/#{node[:rackbox][:user]}"
+  home "#{node['rackbox']['home_dir']}"
   supports manage_home: true
   shell '/bin/bash'
 end
 
-template "/home/#{node[:rackbox][:user]}/.bashrc" do
+template "#{node['rackbox']['home_dir']}/.bashrc" do
   source "bashrc.erb"
   owner node[:rackbox][:user]
 end
 
-directory "/home/#{node[:rackbox][:user]}/apps" do
+directory "#{node['rackbox']['home_dir']}/apps" do
   owner node[:rackbox][:user]
 end
 
-directory "/home/#{node[:rackbox][:user]}/.ssh" do
+directory "#{node['rackbox']['home_dir']}/.ssh" do
   owner node[:rackbox][:user]
   mode "0700"
 end
 
-file "/home/#{node[:rackbox][:user]}/.ssh/authorized_keys" do
-  owner node[:rackbox][:user]
-  mode "0600"
+if node[:rackbox]['ssh_keys']
+  template "#{node['rackbox']['home_dir']}/.ssh/authorized_keys" do
+    source "authorized_keys.erb"
+    owner node[:rackbox][:user]
+    mode "0600"
+    variables :ssh_keys => node[:rackbox]['ssh_keys']
+  end
 end

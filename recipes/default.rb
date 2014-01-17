@@ -9,16 +9,6 @@
 
 include_recipe "rackbox::_common_system"
 include_recipe "rackbox::users"
-
-# Secure the system
-#   configure SSH
-#   configure iptables
-
-# Install database
-#   install and configure PostgreSQL
-
-# Install Nginx
-
-# Install Node.js
-
-# Install rbenv
+# include_recipe "rackbox::security"
+include_recipe "rackbox::database"
+include_recipe "rackbox::webserver"

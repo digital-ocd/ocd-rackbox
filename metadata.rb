@@ -9,3 +9,12 @@ version          '0.1.0'
 supports "ubuntu"
 
 depends "apt"
+depends "sshd"
+depends "simple_iptables"
+depends 'rbenv'
+depends 'nginx'
+depends "nodejs"
+# depends 'unicorn', ">= 1.2.2"
+depends 'runit', '>= 1.1.2'
+depends "postgresql"
+depends "database"

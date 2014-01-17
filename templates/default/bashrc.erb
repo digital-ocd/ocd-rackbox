@@ -74,7 +74,7 @@ if [ ${USER} == "root" ];then
   export PS1="$HII${USER}\w$NM $ $IN"
 fi
 
-if [ ${USER} == "rails" ];then
+if [ ${USER} == "<%= node['rackbox']['user'] %>" ];then
   export PS1="$SI${USER}\w$NM $ $IN"
 fi
 

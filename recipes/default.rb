@@ -10,5 +10,5 @@
 include_recipe "rackbox::_common_system"
 include_recipe "rackbox::users"
 # include_recipe "rackbox::security"
-include_recipe "rackbox::database"
 include_recipe "rackbox::webserver"
+include_recipe "rackbox::database"

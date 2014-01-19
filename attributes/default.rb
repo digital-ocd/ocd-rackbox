@@ -9,7 +9,7 @@ node.default['ocd_rackbox'] = {
 }
 
 node.default['build_essential']['compiletime']      = true
-node.default["ocd_rackbox"]["db_root_password"]         = "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.", # D1git@l0cd
+node.default["ocd_rackbox"]["db_root_password"]         = "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.",
 node.default["ocd_rackbox"]["databases"]["postgresql"]  = []
 node.default['postgresql']['version']               = "9.2"
 node.default['postgresql']['enable_pgdg_apt']       = true

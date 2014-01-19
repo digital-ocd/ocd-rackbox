@@ -1,4 +1,4 @@
-node.default['rackbox'] = {
+node.default['ocd_rackbox'] = {
   user: 'ocd',
   group: 'sudo',
   password: "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.", # D1git@l0cd
@@ -9,34 +9,51 @@ node.default['rackbox'] = {
 }
 
 node.default['build_essential']['compiletime']      = true
-node.default["rackbox"]["db_root_password"]         = "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.", # D1git@l0cd
-node.default["rackbox"]["databases"]["postgresql"]  = []
+node.default["ocd_rackbox"]["db_root_password"]         = "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.", # D1git@l0cd
+node.default["ocd_rackbox"]["databases"]["postgresql"]  = []
 node.default['postgresql']['version']               = "9.2"
 node.default['postgresql']['enable_pgdg_apt']       = true
 node.default['postgresql']['server']['packages']    = ["postgresql-9.2"]
 node.default['postgresql']['dir']                   = "/var/lib/postgresql/9.2/main"
 
-node.default['rackbox']['ruby'] = {
+node.default['ocd_rackbox']['ruby'] = {
   versions: %w(2.0.0-p247),
   global_version: "2.0.0-p247"
 }
 
-# node.default['sshd']['sshd_config']['Port'] = 30007
-node.default['sshd']['sshd_config'] = {
-  'AllowUsers' => "#{node['rackbox']['user']} postgres",
+node.default['ocd_rackbox']['sshd_config'] = {
+  'AcceptEnv' => 'LANG LC_*',
+  'AllowUsers' => "#{node['ocd_rackbox']['user']} postgres",
   'AuthorizedKeysFile' => '%h/.ssh/authorized_keys',
+  'ChallengeResponseAuthentication' => 'no',
   'LoginGraceTime' => '120',
   'LogLevel' => 'INFO',
+  'HostbasedAuthentication' => 'no',
+  'HostKey' => [ '/etc/ssh/ssh_host_dsa_key',
+                 '/etc/ssh/ssh_host_ecdsa_key',
+                 '/etc/ssh/ssh_host_rsa_key' ],
+  'IgnoreRhosts' => 'yes',
+  'KeyRegenerationInterval' => '3600',
   'PasswordAuthentication' => 'yes', # probably want to change to NO
   'PermitEmptyPasswords' => 'no',
   'PermitRootLogin' => 'yes', # set to NO
+  'PrintMotd' => 'no',
   'Port' => 30007, # Change to 30007
+  'Protocol' => 2,
   'PubkeyAuthentication' => 'yes',
   'PrintLastLog' => 'yes',
+  'RhostsRSAAuthentication' => 'no',
   'RSAAuthentication' => 'yes',
+  'ServerKeyBits' => '768',
   'StrictModes' => 'yes',
+  'Subsystem' => 'sftp /usr/lib/openssh/sftp-server',
+  'SyslogFacility' => 'AUTH',
   'TCPKeepAlive' => 'yes',
   'UseDNS' => 'no',
   'UsePAM' => 'no',
-  'X11DisplayOffset' => '10'
+  'UsePrivilegeSeparation' => 'yes',
+  'X11DisplayOffset' => '10',
+  'X11Forwarding' => 'yes'
 }
+
+

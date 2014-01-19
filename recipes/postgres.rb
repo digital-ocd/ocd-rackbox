@@ -1,9 +1,9 @@
 
 include_recipe "postgresql::apt_pgdg_postgresql"
 
-root_password = node["rackbox"]["db_root_password"]
+root_password = node["ocd_rackbox"]["db_root_password"]
 if root_password
-  Chef::Log.info %(Set node["postgresql"]["password"]["postgres"] attributes to node["rackbox"]["db_root_password"])
+  Chef::Log.info %(Set node["postgresql"]["password"]["postgres"] attributes to node["ocd_rackbox"]["db_root_password"])
   node.set["postgresql"]["password"]["postgres"] = root_password
 end
 
@@ -28,7 +28,7 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-# node["rackbox"]["databases"]["postgresql"].each do |entry|
+# node["ocd_rackbox"]["databases"]["postgresql"].each do |entry|
 
 #   postgresql_database entry["database_name"] do
 #     connection postgresql_connection_info

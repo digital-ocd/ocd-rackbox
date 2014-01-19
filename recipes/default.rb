@@ -7,8 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "rackbox::_common_system"
-include_recipe "rackbox::users"
-include_recipe "rackbox::webserver"
-include_recipe "rackbox::database"
-include_recipe "rackbox::security"
+include_recipe "ocd_rackbox::_common_system"
+include_recipe "ocd_rackbox::users"
+include_recipe "ocd_rackbox::security"
+include_recipe "ocd_rackbox::webserver"
+include_recipe "ocd_rackbox::database"

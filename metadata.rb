@@ -1,4 +1,4 @@
-name             'rackbox'
+name             'ocd_rackbox'
 maintainer       'Jeremy Ward'
 maintainer_email 'jeremy.ward@digital-ocd.com'
 license          'All rights reserved'

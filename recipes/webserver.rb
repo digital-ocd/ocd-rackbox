@@ -3,7 +3,7 @@
 # Recipe:: webserver
 #
 
-include_recipe "rackbox::ruby"
+include_recipe "ocd_rackbox::ruby"
 include_recipe "runit"
-include_recipe "rackbox::nginx"
-include_recipe "rackbox::nodejs"
+include_recipe "ocd_rackbox::nginx"
+include_recipe "ocd_rackbox::nodejs"

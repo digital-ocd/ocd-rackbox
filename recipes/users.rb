@@ -3,34 +3,34 @@
 # Recipe:: users
 #
 
-user node['rackbox']['user'] do
-  group node['rackbox']['group']
-  password node['rackbox']['password']
+user node['ocd_rackbox']['user'] do
+  group node['ocd_rackbox']['group']
+  password node['ocd_rackbox']['password']
   system true
-  home "#{node['rackbox']['home_dir']}"
+  home "#{node['ocd_rackbox']['home_dir']}"
   supports manage_home: true
   shell '/bin/bash'
 end
 
-template "#{node['rackbox']['home_dir']}/.bashrc" do
+template "#{node['ocd_rackbox']['home_dir']}/.bashrc" do
   source "bashrc.erb"
-  owner node[:rackbox][:user]
+  owner node['ocd_rackbox']['user']
 end
 
-directory "#{node['rackbox']['home_dir']}/apps" do
-  owner node[:rackbox][:user]
+directory "#{node['ocd_rackbox']['home_dir']}/apps" do
+  owner node['ocd_rackbox']['user']
 end
 
-directory "#{node['rackbox']['home_dir']}/.ssh" do
-  owner node[:rackbox][:user]
+directory "#{node['ocd_rackbox']['home_dir']}/.ssh" do
+  owner node['ocd_rackbox']['user']
   mode "0700"
 end
 
-if node[:rackbox]['ssh_keys']
-  template "#{node['rackbox']['home_dir']}/.ssh/authorized_keys" do
+if node['ocd_rackbox']['ssh_keys']
+  template "#{node['ocd_rackbox']['home_dir']}/.ssh/authorized_keys" do
     source "authorized_keys.erb"
-    owner node[:rackbox][:user]
+    owner node['ocd_rackbox']['user']
     mode "0600"
-    variables :ssh_keys => node[:rackbox]['ssh_keys']
+    variables :ssh_keys => node['ocd_rackbox']['ssh_keys']
   end
 end

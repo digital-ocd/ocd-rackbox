@@ -7,7 +7,6 @@
 #   configure SSH
 #   configure iptables
 
-include_recipe "sshd"
 include_recipe "simple_iptables"
 
 # Reject packets other than those explicitly allowed
@@ -30,7 +29,7 @@ end
 
 # Allow SSH
 simple_iptables_rule "ssh" do
-  rule "--proto tcp --dport #{node['sshd']['sshd_config']['Port']}"
+  rule "--proto tcp --dport #{node['ocd_rackbox']['sshd_config']['Port']}"
   jump "ACCEPT"
 end
 
@@ -45,4 +44,29 @@ end
 simple_iptables_rule "system" do
   rule "--match limit --limit 5/min --jump LOG --log-prefix \"iptables denied: \" --log-level 7"
   jump false
+end
+
+include_recipe "sshd"
+
+file "/etc/ssh/sshd_config" do
+  action :delete
+end
+
+openssh_server '/etc/ssh/sshd_config' do
+  AllowUsers "#{node['ocd_rackbox']['user']} postgres"
+  AuthorizedKeysFile '%h/.ssh/authorized_keys'
+  LoginGraceTime '120'
+  LogLevel 'INFO'
+  PasswordAuthentication "#{node['ocd_rackbox']['sshd_config']['PasswordAuthentication']}" # probably want to change to NO
+  PermitEmptyPasswords 'no'
+  PermitRootLogin "#{node['ocd_rackbox']['sshd_config']['PermitRootLogin']}" # set to NO
+  Port node['ocd_rackbox']['sshd_config']['Port']
+  PubkeyAuthentication 'yes'
+  PrintLastLog 'yes'
+  RSAAuthentication 'yes'
+  StrictModes 'yes'
+  TCPKeepAlive 'yes'
+  UseDNS 'no'
+  UsePAM 'no'
+  X11DisplayOffset '10'
 end

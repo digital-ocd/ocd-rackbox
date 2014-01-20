@@ -28,24 +28,24 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-# node["ocd_rackbox"]["databases"]["postgresql"].each do |entry|
+node["ocd_rackbox"]["databases"]["postgresql"].each do |entry|
 
-#   postgresql_database entry["database_name"] do
-#     connection postgresql_connection_info
-#     template entry["template"] if entry["template"]
-#     encoding entry["encoding"] if entry["encoding"]
-#     collation entry["collation"] if entry["collation"]
-#     connection_limit entry["connection_limit"] if entry["connection_limit"]
-#     owner entry["owner"] if entry["owner"]
-#     action :create
-#   end
+  postgresql_database entry["database_name"] do
+    connection postgresql_connection_info
+    template entry["template"] if entry["template"]
+    encoding entry["encoding"] if entry["encoding"]
+    collation entry["collation"] if entry["collation"]
+    connection_limit entry["connection_limit"] if entry["connection_limit"]
+    owner entry["owner"] if entry["owner"]
+    action :create
+  end
 
-#   postgresql_database_user entry["username"] do
-#     connection postgresql_connection_info
-#     action [:create, :grant]
-#     password(entry["password"])           if entry["password"]
-#     database_name(entry["database_name"]) if entry["database_name"]
-#     privileges(entry["privileges"])       if entry["privileges"]
-#   end
+  postgresql_database_user entry["username"] do
+    connection postgresql_connection_info
+    action [:create, :grant]
+    password(entry["password"])           if entry["password"]
+    database_name(entry["database_name"]) if entry["database_name"]
+    privileges(entry["privileges"])       if entry["privileges"]
+  end
 
-# end
+end

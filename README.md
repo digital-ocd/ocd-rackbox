@@ -1,4 +1,4 @@
-# ocd-rackbox-cookbook cookbook
+# ocd-rackbox  cookbook
 
 # Requirements
 

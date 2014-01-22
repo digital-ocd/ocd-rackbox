@@ -1,11 +1,14 @@
 node.default['ocd_rackbox'] = {
-  user: 'ocd',
+  home_dir: "/home/ocd",
   group: 'sudo',
   password: "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh."
+  no_password_cmds: [
+    "/etc/init.d/nginx"
+  ]
   ssh_keys: [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL4enOfTs8LI0KjeGIDQwv0Urstk5sjMjdv8w8jAnWeI4DQ4+RXPjC77F/SrSuLUwUbgO2jAGl6VhgmQ6urnbI7mgZebSMMCobo6qpsvkYW4yAoXoJl1vWZgLbusfl9UqZtRYTFxu3y8z1pZQY69yjRT8AI57AS3XeGG4BpstEpmwPhhhPPQoiBMF6k6rCTh0sivHC0/60uJa6TuKUGXgt4Df97PqXe/Q4ROd8Oo7SZDprqajs43TjrKzKA6ALuurwX7FVi5ZQO4GPRIYi/m5QX7xgvvB5w4YLnOUKr6lFsHOSbjg1ztNqPxSxonJhq0ppqHT3dFNngfN274dztC+t jrmy.ward@gmail.com"
   ],
-  home_dir: "/home/ocd"
+  user: 'ocd'
 }
 
 node.default['build_essential']['compiletime']          = true

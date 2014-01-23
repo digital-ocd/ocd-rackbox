@@ -1,10 +1,6 @@
 #
-# Cookbook Name:: rackbox
+# Cookbook Name:: ocd_rackbox
 # Recipe:: default
-#
-# Copyright (C) 2014 OC Digital
-#
-# All rights reserved - Do Not Redistribute
 #
 
 include_recipe "ocd_rackbox::_common_system"

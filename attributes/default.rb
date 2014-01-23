@@ -1,23 +1,25 @@
 node.default['ocd_rackbox'] = {
   home_dir: "/home/ocd",
   group: 'sudo',
-  password: "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh."
+  password: "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.",
   no_password_cmds: [
     "/etc/init.d/nginx"
-  ]
+  ],
   ssh_keys: [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL4enOfTs8LI0KjeGIDQwv0Urstk5sjMjdv8w8jAnWeI4DQ4+RXPjC77F/SrSuLUwUbgO2jAGl6VhgmQ6urnbI7mgZebSMMCobo6qpsvkYW4yAoXoJl1vWZgLbusfl9UqZtRYTFxu3y8z1pZQY69yjRT8AI57AS3XeGG4BpstEpmwPhhhPPQoiBMF6k6rCTh0sivHC0/60uJa6TuKUGXgt4Df97PqXe/Q4ROd8Oo7SZDprqajs43TjrKzKA6ALuurwX7FVi5ZQO4GPRIYi/m5QX7xgvvB5w4YLnOUKr6lFsHOSbjg1ztNqPxSxonJhq0ppqHT3dFNngfN274dztC+t jrmy.ward@gmail.com"
   ],
   user: 'ocd'
 }
 
-node.default['build_essential']['compiletime']          = true
-node.default["ocd_rackbox"]["db_root_password"]         = "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.",
-node.default["ocd_rackbox"]["databases"]["postgresql"]  = []
-node.default['postgresql']['version']                   = "9.2"
-node.default['postgresql']['enable_pgdg_apt']           = true
-node.default['postgresql']['server']['packages']        = ["postgresql-9.2"]
-node.default['postgresql']['dir']                       = "/var/lib/postgresql/9.2/main"
+node.set['postgresql']['apt_distribution']  = 'precise'
+node.set['postgresql']['version']           = "9.2"
+# node.set["ocd_postgres"]["users"] << {
+#   "username": "postgres",
+#   "password": "$1$3XJlGhET$Zz2s1s0yURmac7p1u1Peh.",
+#   "superuser": true,
+#   "createdb": false,
+#   "login": true
+# }
 
 node.default['ocd_rackbox']['ruby'] = {
   versions: %w(2.0.0-p247),
@@ -58,5 +60,3 @@ node.default['ocd_rackbox']['sshd_config'] = {
   'X11DisplayOffset' => '10',
   'X11Forwarding' => 'yes'
 }
-
-

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rackbox
+# Cookbook Name:: ocd_rackbox
 # Recipe:: nginx
 #
 

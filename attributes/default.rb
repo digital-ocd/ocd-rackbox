@@ -17,38 +17,39 @@ node.default['ocd_rackbox']['ruby'] = {
   global_version: "2.0.0-p247"
 }
 
-node.default['ocd_rackbox']['sshd_config'] = {
-  'AcceptEnv' => 'LANG LC_*',
-  'AllowAgentForwarding' => 'yes',
-  'AllowUsers' => "#{node['ocd_rackbox']['user']} postgres",
-  'AuthorizedKeysFile' => '%h/.ssh/authorized_keys',
-  'ChallengeResponseAuthentication' => 'no',
-  'LoginGraceTime' => '120',
-  'LogLevel' => 'INFO',
-  'HostbasedAuthentication' => 'no',
-  'HostKey' => [ '/etc/ssh/ssh_host_dsa_key',
-                 '/etc/ssh/ssh_host_ecdsa_key',
-                 '/etc/ssh/ssh_host_rsa_key' ],
-  'IgnoreRhosts' => 'yes',
-  'KeyRegenerationInterval' => '3600',
-  'PasswordAuthentication' => 'yes', # probably want to change to NO
-  'PermitEmptyPasswords' => 'no',
-  'PermitRootLogin' => 'yes', # set to NO
-  'PrintMotd' => 'no',
-  'Port' => 30007, # Change to 30007
-  'Protocol' => 2,
-  'PubkeyAuthentication' => 'yes',
-  'PrintLastLog' => 'yes',
-  'RhostsRSAAuthentication' => 'no',
-  'RSAAuthentication' => 'yes',
-  'ServerKeyBits' => '768',
-  'StrictModes' => 'yes',
-  'Subsystem' => 'sftp /usr/lib/openssh/sftp-server',
-  'SyslogFacility' => 'AUTH',
-  'TCPKeepAlive' => 'yes',
-  'UseDNS' => 'no',
-  'UsePAM' => 'no',
-  'UsePrivilegeSeparation' => 'yes',
-  'X11DisplayOffset' => '10',
-  'X11Forwarding' => 'yes'
-}
+node.default['ocd_rackbox']['sshd_config']['AcceptEnv'] = 'LANG LC_*'
+node.default['ocd_rackbox']['sshd_config']['AllowAgentForwarding'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']['AllowUsers'] = "#{node['ocd_rackbox']['user']} postgres"
+node.default['ocd_rackbox']['sshd_config']['AuthorizedKeysFile'] = '%h/.ssh/authorized_keys'
+node.default['ocd_rackbox']['sshd_config']['ChallengeResponseAuthentication'] = 'no'
+node.default['ocd_rackbox']['sshd_config']['LoginGraceTime'] = '120'
+node.default['ocd_rackbox']['sshd_config']['LogLevel'] = 'INFO'
+node.default['ocd_rackbox']['sshd_config']['HostbasedAuthentication'] = 'no'
+node.default['ocd_rackbox']['sshd_config']['HostKey'] = [
+  '/etc/ssh/ssh_host_dsa_key',
+  '/etc/ssh/ssh_host_ecdsa_key',
+  '/etc/ssh/ssh_host_rsa_key'
+],
+node.default['ocd_rackbox']['sshd_config']'IgnoreRhosts'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'KeyRegenerationInterval'] = '3600'
+node.default['ocd_rackbox']['sshd_config']'PasswordAuthentication'] = 'yes' # probably want to change to NO
+node.default['ocd_rackbox']['sshd_config']'PermitEmptyPasswords'] = 'no'
+node.default['ocd_rackbox']['sshd_config']'PermitRootLogin'] = 'yes' # set to NO
+node.default['ocd_rackbox']['sshd_config']'PrintMotd'] = 'no'
+node.default['ocd_rackbox']['sshd_config']'Port'] = 30007 # Change to 30007
+node.default['ocd_rackbox']['sshd_config']'Protocol'] = 2
+node.default['ocd_rackbox']['sshd_config']'PubkeyAuthentication'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'PrintLastLog'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'RhostsRSAAuthentication'] = 'no'
+node.default['ocd_rackbox']['sshd_config']'RSAAuthentication'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'ServerKeyBits'] = '768'
+node.default['ocd_rackbox']['sshd_config']'StrictModes'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'Subsystem'] = 'sftp /usr/lib/openssh/sftp-server'
+node.default['ocd_rackbox']['sshd_config']'SyslogFacility'] = 'AUTH'
+node.default['ocd_rackbox']['sshd_config']'TCPKeepAlive'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'UseDNS'] = 'no'
+node.default['ocd_rackbox']['sshd_config']'UsePAM'] = 'no'
+node.default['ocd_rackbox']['sshd_config']'UsePrivilegeSeparation'] = 'yes'
+node.default['ocd_rackbox']['sshd_config']'X11DisplayOffset'] = '10'
+node.default['ocd_rackbox']['sshd_config']'X11Forwarding'] = 'yes'
+

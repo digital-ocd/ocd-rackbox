@@ -22,6 +22,13 @@ template "/etc/sudoers" do
   variables :commands => node['ocd_rackbox']['no_password_cmds'].join(", ")
 end
 
+template "etc/sudoers" do
+  source 'sudoers.erb'
+  mode   '0440'
+  owner  'root'
+  variables :commands => node['ocd_rackbox']['no_password_cmds'].join(", ")
+end
+
 directory "#{node['ocd_rackbox']['home_dir']}/apps" do
   owner node['ocd_rackbox']['user']
 end

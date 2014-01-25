@@ -19,6 +19,7 @@ node.default['ocd_rackbox']['ruby'] = {
 
 node.default['ocd_rackbox']['sshd_config'] = {
   'AcceptEnv' => 'LANG LC_*',
+  'AllowAgentForwarding' => 'yes',
   'AllowUsers' => "#{node['ocd_rackbox']['user']} postgres",
   'AuthorizedKeysFile' => '%h/.ssh/authorized_keys',
   'ChallengeResponseAuthentication' => 'no',

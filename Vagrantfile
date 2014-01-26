@@ -14,9 +14,17 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
+      ocd_rackbox: {
+        sshd_config: {
+          PermitRootLogin: 'yes',
+          PasswordAuthentication: 'yes',
+          Port: 22
+        }
+      }
     }
     chef.run_list = [
-      "recipe[ocd_rackbox::default]"
+      # "recipe[ocd_rackbox::_common_system]",
+      "recipe[ocd_rackbox::users]"
     ]
   end
 end

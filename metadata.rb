@@ -10,6 +10,7 @@ supports 'ubuntu'
 
 depends 'apt'
 depends 'sshd'
+depends 'sudo'
 depends 'simple_iptables'
 depends 'rbenv'
 depends 'nginx'

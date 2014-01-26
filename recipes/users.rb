@@ -3,6 +3,8 @@
 # Recipe:: users
 #
 
+include_recipe "sudo"
+
 user node['ocd_rackbox']['user'] do
   group node['ocd_rackbox']['group']
   password node['ocd_rackbox']['password']
@@ -17,10 +19,8 @@ template "#{node['ocd_rackbox']['home_dir']}/.bashrc" do
   owner node['ocd_rackbox']['user']
 end
 
-template "etc/sudoers" do
-  source 'sudoers.erb'
-  mode   '0440'
-  owner  'root'
+sudo "#{node['ocd_rackbox']['user']}_nopasswd" do
+  template    'user_nopasswd.erb'
   variables :commands => node['ocd_rackbox']['no_password_cmds'].join(", ")
 end
 

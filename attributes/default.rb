@@ -17,8 +17,8 @@ node.default['authorization']['sudo']['sudoers_defaults'] = [
   'secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"'
 ]
 
-node.set['ocd_postgres']['apt_distribution']  = 'precise'
-node.set['ocd_postgres']['version']           = "9.2"
+node.set['postgresql']['apt_distribution']  = 'precise'
+node.set['postgresql']['version']           = "9.2"
 node.default['ocd_rackbox']['ruby'] = {
   versions: %w(2.0.0-p247),
   global_version: "2.0.0-p247"

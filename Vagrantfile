@@ -23,8 +23,7 @@ Vagrant.configure("2") do |config|
       }
     }
     chef.run_list = [
-      # "recipe[ocd_rackbox::_common_system]",
-      "recipe[ocd_rackbox::users]"
+      "recipe[ocd_rackbox::default]"
     ]
   end
 end

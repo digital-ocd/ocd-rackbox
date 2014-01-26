@@ -19,9 +19,10 @@ template "#{node['ocd_rackbox']['home_dir']}/.bashrc" do
   owner node['ocd_rackbox']['user']
 end
 
-sudo "#{node['ocd_rackbox']['user']}_nopasswd" do
-  template    'user_nopasswd.erb'
-  variables :commands => node['ocd_rackbox']['no_password_cmds'].join(", ")
+sudo 'ocd' do
+  user      "ocd"    # or a username
+  nopasswd true
+  commands  node['ocd_rackbox']['no_password_cmds']
 end
 
 directory "#{node['ocd_rackbox']['home_dir']}/apps" do

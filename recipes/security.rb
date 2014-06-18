@@ -54,6 +54,7 @@ end
 
 openssh_server '/etc/ssh/sshd_config' do
   AllowUsers "#{node['ocd_rackbox']['user']} postgres"
+  AllowAgentForwarding "#{node['ocd_rackbox']['sshd_config']['AllowAgentForwarding']}"
   AuthorizedKeysFile '%h/.ssh/authorized_keys'
   LoginGraceTime '120'
   LogLevel 'INFO'
